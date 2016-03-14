@@ -8,4 +8,10 @@ $(document).ready(function(){
   socket.on("chat message", function(msg){
     $("#messages").append($("<li>").text(msg));
   });
+  socket.on("connect message", function(msg){
+    $("#messages").append($("<li>").text("a user has joined the chatroom"));
+  });
+  socket.on("disconnect message", function(msg){
+    $("#messages").append($("<li>").text("a user has left the chatroom"));
+  });
 });
