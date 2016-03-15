@@ -7,21 +7,25 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/public/index.html');
 });
 
+var userNumber = 1;
+
 app.use(express.static(__dirname + "/public"));
 
 io.on('connection', function(socket){
-  io.emit("connect message");
+  socket.userName = `User ${userNumber}`;
+  userNumber++;
+  io.emit("connect message", `${socket.userName} has joined the chatroom`);
 
   socket.on('disconnect', function(){
-    io.emit("disconnect message");
+    io.emit("disconnect message", `${socket.userName} left the chatroom` );
   });
 
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    io.emit('chat message', `${socket.userName} : ${msg}`);
   });
 
 });
 
 http.listen(3000, function(){
-  console.log('listening on *:3000');
+  console.log('listening on port :3000');
 });

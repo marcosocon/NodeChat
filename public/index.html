@@ -6,11 +6,19 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+
+  <form action="" class="box">
+    <input type="text" placeholder="type your name" id="user"/>
+    <button>submit</button>
+  </form>
+
   <ul id="messages"></ul>
-  <form action="">
-    <input type="text" id="m" autocomplete="off"/>
+
+  <form action="" class="chat">
+    <input type="text" placeholder="type a message" id="m" autocomplete="off"/>
     <button>Send!</button>
   </form>
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script src="/main.js"></script>
